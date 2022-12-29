@@ -1,16 +1,17 @@
+import "../envConfig";
 import express from "express";
-import route from "./routes/clientes.routes";
 import cors from "cors";
-import main from "./bd/config";
+import route from "./routes/clientes.routes";
+import dbConfig from "./bd/config";
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-main();
+dbConfig();
 
 app.use("/api", route);
 

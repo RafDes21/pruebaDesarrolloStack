@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
+const mongoUrl = process.env.MONGO_URL || "";
+
 async function main() {
   try {
     mongoose.set("strictQuery", false);
-    mongoose.connect(
-      "mongodb+srv://rafCoder:coderRafa@cluster0.7jdaatw.mongodb.net/clientes?retryWrites=true&w=majority"
-    );
+    mongoose.connect(mongoUrl);
     console.log("connect mongo");
   } catch (error) {
     console.log(error);
