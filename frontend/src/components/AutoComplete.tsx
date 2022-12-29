@@ -27,7 +27,7 @@ const AutoComplete: React.FC<{}> = () => {
   };
 
   return (
-    <Stack>
+    <Stack sx={{ marginBottom: "40px" }}>
       <Autocomplete
         options={clients}
         sx={{ width: 300 }}

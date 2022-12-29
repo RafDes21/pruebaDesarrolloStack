@@ -13,7 +13,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <Container sx={{ paddingTop: " 70px" }}>
+    <Container sx={{ paddingTop: " 150px" }}>
       <CompModal />
       <List />
     </Container>

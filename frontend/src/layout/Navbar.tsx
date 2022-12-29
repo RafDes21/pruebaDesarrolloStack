@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { Container } from "@mui/system";
 import React from "react";
 import {Link} from "react-router-dom"
-import AutoComplete from "../components/AutoComplete";
+import "./navbar.css"
 
 const Navbar: React.FC<{}> = () => {
   return (
@@ -14,9 +14,8 @@ const Navbar: React.FC<{}> = () => {
         <Toolbar>
             <Container>
                 <Grid container  justifyContent="space-between">
-                    <Grid item><Link to={'/'}>Home</Link></Grid>
-                    <Grid><AutoComplete/></Grid>
-                    <Grid item><Link to={'/agregar'}>Agregar Cliente</Link></Grid>
+                    <Grid item><Link className="nav-item" to={'/'}>Home</Link></Grid>            
+                    <Grid item><Link className="nav-item" to={'/agregar'}>Agregar Cliente</Link></Grid>
                 </Grid>
             </Container>
         </Toolbar>

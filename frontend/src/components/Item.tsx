@@ -5,6 +5,7 @@ import { FiEye } from "react-icons/fi";
 import { useAppSelector, useAppDispatch } from "../redux/hooks/hooks";
 import { getClients, getClientById } from "../redux/thunks/thunksClients";
 import { toggleClientId, updateStateModal } from "../redux/slices/clienteSlice";
+import "./item.css"
 
 interface Client {
   direccion: string;
@@ -55,7 +56,7 @@ export const Item: React.FC<{}> = () => {
           <TableCell>{item.documento}</TableCell>
           <TableCell>{item.telefono}</TableCell>
           <TableCell>
-            <FiEye onClick={() => clientById(item._id)} />
+            <FiEye className="eyeItem" onClick={() => clientById(item._id)} />
           </TableCell>
         </TableRow>
       ))}

@@ -23,7 +23,7 @@ const Formul: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useAppDispatch();
-  
+
   const [datos, setDatos] = React.useState<DatosType>({
     nombre: "",
     documento: "",
@@ -39,8 +39,7 @@ const Formul: React.FC = () => {
     if (id) {
       dispatch(updateClientById(id, datos));
       navigate("/");
-
-      console.log("actualizado");
+      toast.success("Cliente Actualizado...");
     } else {
       axios({
         method: "post",
@@ -60,7 +59,6 @@ const Formul: React.FC = () => {
   const itemClient = async (id: string) => {
     const url = `http://localhost:8080/api/clientes/${id}`;
     const res = await axios.get(url);
-    console.log(res.data);
     const { nombre, documento, direccion, telefono } = res.data;
     setDatos({
       nombre,
@@ -90,9 +88,9 @@ const Formul: React.FC = () => {
         <Grid item>
           <Paper sx={{ padding: "10px", borderRadius: "8px" }}>
             {id ? (
-              <Typography sx={{ mt: 1, mb: 1 }}>Datos Editados</Typography>
+              <Typography sx={{ mt: 1, mb: 1 }} align="center" color="primary">DATOS EDITADOS</Typography>
             ) : (
-              <Typography sx={{ mt: 1, mb: 1 }}>Ingrese los datos</Typography>
+              <Typography sx={{ mt: 1, mb: 1 }} align="center" color="primary">INGRESE UN NUEVO CLIENTE</Typography>
             )}
             <Box component="form" onSubmit={handeSubmit}>
               <TextField

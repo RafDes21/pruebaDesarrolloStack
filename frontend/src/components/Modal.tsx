@@ -11,9 +11,11 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 300,
+  height:200,
+  fontSize: 30,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  color:"#ffff",
   boxShadow: 24,
   p: 4,
 };
@@ -30,12 +32,12 @@ const CompModal: React.FC<{}> = () => {
   return (
     <Modal sx={style} open={stateModal}>
       <Container>
-        <Typography>DATOS</Typography>
+        <Typography align="center" variant="h5">DATOS</Typography>
         <Typography>Nombre: {client.nombre}</Typography>
         <Typography>Dirección: {client.direccion}</Typography>
         <Typography>DNI: {client.documento}</Typography>
         <Typography>TELEFONO: {client.telefono}</Typography>
-        <AiFillCloseCircle onClick={closeModal} />
+        <AiFillCloseCircle style={{color:"#181C9D", textShadow:"2px 4px 6px #010101", cursor:"pointer"}} onClick={closeModal} />
       </Container>
     </Modal>
   );
