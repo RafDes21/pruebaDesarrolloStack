@@ -5,7 +5,6 @@ import Paper from "@mui/material/Paper";
 import { Table, TableCell, TableRow } from "@mui/material";
 import { Item } from "./Item";
 import { useAppSelector, useAppDispatch } from "../redux/hooks/hooks";
-
 import { deleteClientsByIds } from "../redux/thunks/thunksClients";
 
 const List: React.FC<{}> = () => {

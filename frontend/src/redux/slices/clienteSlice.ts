@@ -47,4 +47,5 @@ const clientSlice = createSlice({
 });
 
 export default clientSlice.reducer;
-export const { saveClients, saveClient, toggleClientId, updateStateModal } = clientSlice.actions;
+export const { saveClients, saveClient, toggleClientId, updateStateModal } =
+  clientSlice.actions;

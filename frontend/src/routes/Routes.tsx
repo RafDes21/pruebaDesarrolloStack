@@ -3,8 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "../layout/Layout";
 import Clients from "../pages/AddClients";
 import Home from "../pages/Home";
-import {ToastContainer} from "react-toastify"
-
+import { ToastContainer } from "react-toastify";
 
 const CompRoutes: React.FC<{}> = () => {
   return (
@@ -16,7 +15,7 @@ const CompRoutes: React.FC<{}> = () => {
           <Route path="/actualizar/:id" element={<Clients />} />
         </Route>
       </Routes>
-      <ToastContainer/>
+      <ToastContainer />
     </BrowserRouter>
   );
 };

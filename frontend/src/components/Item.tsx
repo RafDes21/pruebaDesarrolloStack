@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { TableBody, TableCell, TableRow } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import { FiEye } from "react-icons/fi";
-
-// uso del estado de redux (Isra)
 import { useAppSelector, useAppDispatch } from "../redux/hooks/hooks";
 import { getClients, getClientById } from "../redux/thunks/thunksClients";
 import { toggleClientId, updateStateModal } from "../redux/slices/clienteSlice";
@@ -17,29 +15,23 @@ interface Client {
 }
 
 export const Item: React.FC<{}> = () => {
-  // const [adId, setAdId] = useState()
   const dispatch = useAppDispatch();
 
   const clients: Client[] = useAppSelector((state) => state.clients.clients);
- const stateModal = useAppSelector((state) => state.clients.stateModal)
-
-  
-
-  //   console.log(clients);
+  const stateModal = useAppSelector((state) => state.clients.stateModal);
 
   useEffect(() => {
     dispatch(getClients());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  //   const isItemSelected = () => {};
 
   const toggleSelectClient = (id: string, checked: boolean) => {
     dispatch(toggleClientId({ id, checked }));
   };
 
   const clientById = (id: string) => {
-    dispatch(getClientById(id))
-    dispatch(updateStateModal(!stateModal))
+    dispatch(getClientById(id));
+    dispatch(updateStateModal(!stateModal));
   };
 
   return (

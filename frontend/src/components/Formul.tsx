@@ -10,7 +10,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { updateClientById } from "../redux/thunks/thunksClients";
-// import { getClientById } from "../redux/thunks/thunksClients";
 import { useAppDispatch } from "../redux/hooks/hooks";
 
 type DatosType = {
@@ -24,10 +23,7 @@ const Formul: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useAppDispatch();
-
-  //   const client = useAppSelector((state) => state.clients.client);
-  // console.log(client);
-
+  
   const [datos, setDatos] = React.useState<DatosType>({
     nombre: "",
     documento: "",
