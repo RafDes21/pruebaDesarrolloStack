@@ -6,7 +6,7 @@ import CompRoutes from "./routes/Routes";
 const App: React.FC<{}> = () => {
   return (
     <Provider store={store}>
-      <CompRoutes />
+      <CompRoutes/>
     </Provider>
   );
 };

@@ -19,7 +19,7 @@ route.post("/clientes", async (req, res) => {
   const cliente = req.body;
   const clienteNuevo = new Clientes(cliente);
   await clienteNuevo.save();
-  res.send("cliente agregado");
+  res.send();
 });
 
 route.put("/clientes/:id", async (req, res) => {
@@ -30,7 +30,7 @@ route.put("/clientes/:id", async (req, res) => {
     { _id: id },
     { $set: { nombre, documento, direccion, telefono } }
   );
-  res.status(200);
+  res.status(200).send();
 });
 
 route.delete("/clientes", async (req, res) => {
@@ -39,7 +39,7 @@ route.delete("/clientes", async (req, res) => {
   if (ids) {
     await Clientes.deleteMany({ _id: { $in: ids.split(",") } });
   }
-  res.status(200);
+  return res.status(200).send();
 });
 
 export default route;

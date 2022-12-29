@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { TableBody, TableCell, TableRow } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import { FiEye } from "react-icons/fi";
 import { useAppSelector, useAppDispatch } from "../redux/hooks/hooks";
-import { getClients, getClientById } from "../redux/thunks/thunksClients";
+import { getClientById } from "../redux/thunks/thunksClients";
 import { toggleClientId, updateStateModal } from "../redux/slices/clienteSlice";
-import "./item.css"
+import "./item.css";
 
 interface Client {
   direccion: string;
@@ -20,11 +20,6 @@ export const Item: React.FC<{}> = () => {
 
   const clients: Client[] = useAppSelector((state) => state.clients.clients);
   const stateModal = useAppSelector((state) => state.clients.stateModal);
-
-  useEffect(() => {
-    dispatch(getClients());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const toggleSelectClient = (id: string, checked: boolean) => {
     dispatch(toggleClientId({ id, checked }));

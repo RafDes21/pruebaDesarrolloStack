@@ -9,8 +9,7 @@ const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getClients());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   return (
     <Container sx={{ paddingTop: " 150px" }}>
