@@ -4,7 +4,9 @@ import { Clientes } from "../models/clientes";
 const route = Router();
 
 route.get("/clientes", async (_req, res) => {
-  const data = await Clientes.find();
+  const data = await Clientes.find().sort({date:-1});
+
+
   res.json(data);
 });
 
