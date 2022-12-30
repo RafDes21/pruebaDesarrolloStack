@@ -6,10 +6,13 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
-import { updateClientById } from "../redux/thunks/thunksClients";
+import {
+  createClient,
+  getClientId,
+  updateClientById,
+} from "../redux/thunks/thunksClients";
 import { useAppDispatch } from "../redux/hooks/hooks";
 
 type DatosType = {
@@ -41,24 +44,14 @@ const Formul: React.FC = () => {
       navigate("/");
       toast.success("Cliente Actualizado...");
     } else {
-      axios({
-        method: "post",
-        url: "http://localhost:8080/api/clientes",
-        data: {
-          nombre: datos.nombre,
-          documento: datos.documento,
-          direccion: datos.direccion,
-          telefono: datos.telefono,
-        },
-      });
+      dispatch(createClient(datos));
       toast.success("Cliente Agregado!");
       navigate("/");
     }
   };
 
   const itemClient = async (id: string) => {
-    const url = `http://localhost:8080/api/clientes/${id}`;
-    const res = await axios.get(url);
+    const res = await getClientId(id);
     const { nombre, documento, direccion, telefono } = res.data;
     setDatos({
       nombre,
@@ -72,9 +65,7 @@ const Formul: React.FC = () => {
     if (id) {
       itemClient(id);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   return (
     <Container maxWidth="sm" sx={{ marginTop: "90px" }}>
@@ -88,9 +79,13 @@ const Formul: React.FC = () => {
         <Grid item>
           <Paper sx={{ padding: "10px", borderRadius: "8px" }}>
             {id ? (
-              <Typography sx={{ mt: 1, mb: 1 }} align="center" color="primary">DATOS EDITADOS</Typography>
+              <Typography sx={{ mt: 1, mb: 1 }} align="center" color="primary">
+                DATOS EDITADOS
+              </Typography>
             ) : (
-              <Typography sx={{ mt: 1, mb: 1 }} align="center" color="primary">INGRESE UN NUEVO CLIENTE</Typography>
+              <Typography sx={{ mt: 1, mb: 1 }} align="center" color="primary">
+                INGRESE UN NUEVO CLIENTE
+              </Typography>
             )}
             <Box component="form" onSubmit={handeSubmit}>
               <TextField

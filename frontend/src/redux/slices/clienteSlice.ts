@@ -20,7 +20,6 @@ const initialState: ClientState = {
 const clientSlice = createSlice({
   name: "clients",
   initialState,
-
   reducers: {
     saveClients: (state, action: PayloadAction<[]>) => {
       state.clients = action.payload;

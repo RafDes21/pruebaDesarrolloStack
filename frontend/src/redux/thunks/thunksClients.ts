@@ -1,7 +1,7 @@
 import { saveClients, saveClient } from "../slices/clienteSlice";
 import axios from "axios";
 
-const apiHost = "http://localhost:8080";
+const apiHost = process.env.REACT_APP_API_HOST;
 
 export const getClients = () => {
   return async (dispatch: any) => {
@@ -28,4 +28,14 @@ export const updateClientById = (id: string, client: any) => {
   return async () => {
     await axios.put(`${apiHost}/api/clientes/${id}`, client);
   };
+};
+
+export const createClient = (client: any) => {
+  return async () => {
+    await axios.post(`${apiHost}/api/clientes`, client);
+  };
+};
+
+export const getClientId = async (id: string) => {
+  return await axios.get(`${apiHost}/api/clientes/${id}`);
 };
